@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model User
+
+<div class="container text-center">
+    @if (TempData["verifyResult"] != null)
+    {
+        <p>@TempData["verifyResult"]</p>
+    }
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        @Html.TextBoxFor(x => x.IdentityNumber, new { @maxlength = "11", @placeholder = "T.C. Kimlik No: " })
+        @Html.TextBoxFor(x => x.FirstName, new { @type = "text", @placeholder = "Adınız: " })
+        @Html.TextBoxFor(x => x.LastName, new { @type = "text", @placeholder = "Soyadınız: " })
+        @Html.TextBoxFor(x => x.BirthYear, new { @type = "number", @max = "2021", @min = "1900", @placeholder = "Doğum Yılınız: " })
+        <button type="submit" class="btn btn-success">Sorgula</button>
+    }
+</div>
